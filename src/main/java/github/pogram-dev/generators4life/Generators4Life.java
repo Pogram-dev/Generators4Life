@@ -17,6 +17,47 @@ public class ExampleAddon extends JavaPlugin implements SlimefunAddon {
 
     @Override
     public void onEnable() {
+    	
+    	NamespacedKey categoryId = new NamespacedKey(this, "great_gens");
+    	CustomItemStack categoryItem = new CustomItemStack(Material.BEDROCK, "&4Brought to you by Ban Ban!");
+    	ItemGroup itemGroup = new ItemGroup(categoryId, categoryItem);
+    	
+    	SlimefunItemStack itemStack = new SlimefunItemStack("GRAND_PLACEHOLDER", Material.EMERALD, "&aMaster Emerald", "", "&7How did you get this? Are you some sort of... WIZARD?!");
+    	
+    	RecipeType.ENHANCED_CRAFTING_TABLE
+    	ItemStack[] recipe = {
+    			new ItemStack(Material.EMERALD), new ItemStack(Material.LODESTONE), new ItemStack(Material.EMERALD),
+    			new ItemStack(Material.ENDER_PEARL), new ItemStack(Material.ELYTRA), new ItemStack(Material.ENDER_PEARL),
+    			new ItemStack(Material.EMERALD), new ItemStack(Material.EMERALD_BLOCK), new ItemStack(Material.EMERALD)
+    	}
+    	
+    	SlimefunItemStack itemStack = new SlimefunItmeStack("DECEIT_CAKE", Material.CAKE, "&aJust a cake!", "&7WARNING: Don't eat this.", "&7The Cake Is A Lie.");
+    	
+    	ItemStack[] recipe = {
+    			new ItemStack(Material.WHEAT_SEEDS), null, new ItemStack(Material.WHEAT_SEEDS),
+    			null, new ItemStack(Material.FLINT_AND_STEEL), null,
+    			new ItemStack(Material.WHEAT_SEEDS), null, new ItemStack(Material.WHEAT_SEEDS)
+    	};
+    	
+    	public class FireCake extends SlimefunItem{
+    		public FireCake(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, itemStack[] recipe) {
+    			super(itemGroup, item, recipeType, recipe);
+    		}
+    		
+    		@Override
+    		public void preRegister() {
+    			BlockUseHandler blockUseHandler = this::onBlockRightClick;
+    			addItemHandler(blockUseHandler);
+    		}
+    		
+    		private void onBlockRightClick(PlayerRightClickEvent event) {
+    			event.cancel();
+    			event.getPlayer().setFireTicks(5 * 20);
+    		}
+    	}
+        
+    	FireCake cake = new FireCake(itemGroup, itemStack, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+    	cake.register(this);
         // Read something from your config.yml
         Config cfg = new Config(this);
 
@@ -28,18 +69,14 @@ public class ExampleAddon extends JavaPlugin implements SlimefunAddon {
          * 1. Creating a new Category
          * This Category will use the following ItemStack
          */
-        ItemStack itemGroupItem = new CustomItemStack(Material.DIAMOND, "&4Addon Category", "", "&a> Click to open");
 
         // Give your Category a unique id.
-        NamespacedKey itemGroupId = new NamespacedKey(this, "addon_category");
-        ItemGroup itemGroup = new ItemGroup(itemGroupId, itemGroupItem);
-
+       
         /*
          * 2. Create a new SlimefunItemStack
          * This class has many constructors, it is very important
          * that you give each item a unique id.
          */
-        SlimefunItemStack slimefunItem = new SlimefunItemStack("COOL_DIAMOND", Material.DIAMOND, "&4Cool Diamond", "&c+20% Coolness");
 
         /*
          * 3. Creating a Recipe
@@ -48,7 +85,6 @@ public class ExampleAddon extends JavaPlugin implements SlimefunAddon {
          * The machine in which this recipe is crafted in is specified
          * further down as the RecipeType.
          */
-        ItemStack[] recipe = { new ItemStack(Material.EMERALD), null, new ItemStack(Material.EMERALD), null, new ItemStack(Material.DIAMOND), null, new ItemStack(Material.EMERALD), null, new ItemStack(Material.EMERALD) };
 
         /*
          * 4. Registering the Item
@@ -57,8 +93,6 @@ public class ExampleAddon extends JavaPlugin implements SlimefunAddon {
          * which this item is crafted in.
          * Recipe Types from Slimefun itself will automatically add the recipe to that machine.
          */
-        SlimefunItem item = new SlimefunItem(itemGroup, slimefunItem, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
-        item.register(this);
     }
 
     @Override
