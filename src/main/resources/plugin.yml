@@ -1,14 +1,14 @@
 ## CHANGE this to the name of your plugin.
-name: SlimefunAddon
+name: Generators4Life
 
 ## CHANGE this to your username.
-author: CHANGEME
+author: Pogram_Basilisk
 
 ## CHANGE this to a meaninful but short description of your plugin.
-description: A generic Slimefun4-Addon
+description: A SlimeFun4 addon which adds multiple machinery to work with, making the hard-work much easier than it has to be!
 
 ## CHANGE this to the path of the class that extends JavaPlugin.
-main: me.CHANGEME.slimefunaddon.ExampleAddon
+main: me.pogram.generators4life.Generators4Life
 
 ## You can change this to link to your website or repository. You can also remove this line if you want to.
 website: https://github.com/Slimefun/Addon-Template
