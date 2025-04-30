@@ -1,6 +1,9 @@
-# Slimefun4 Addon
-This is an example Repository for a generic Slimefun4 Addon.
-In the top left is a button "Use this template", click this to create your own Addon for Slimefun4 using this basic template.
+# Generators 4 Life!
+Generators 4 Life! is a SlimeFun4 addon in which adds multiple machinery you can work with so that the hard-work becomes easier for you and your friends, giving you a chance at focusing more on other things and clear your mind from the trouble.
+All of this ranging from:
+Small Item Generators
+to the Grandiose Blaze Powder Generator!
+Of course, we have much, much more for you to uncover, and even more to come in the future.
 
 ## How to create your own addon.
 This is a template repository that you can use to create your own Slimefun4 Addon.<br>
